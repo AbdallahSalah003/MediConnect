@@ -10,4 +10,15 @@ public class Doctor {
         this.timeslots = new boolean[numberOfSlots];
         this.patients = new String[numberOfSlots];
     }
+    public String getDoctorId() {
+        return this.id;
+    }
+    public boolean setTimeslot(int slotIndex, String patientName) {
+        if (slotIndex >= 0 && slotIndex < this.timeslots.length && !this.timeslots[slotIndex]) {
+            timeslots[slotIndex] = true;
+            patients[slotIndex] = patientName;
+            return true;
+        }
+        return false;
+    }
 }
