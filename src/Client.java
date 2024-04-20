@@ -7,9 +7,8 @@ public class Client {
     public static final int CANCEL_APPOINTMENT_PORT = 6667;
     public static void main(String[] args) throws IOException {
         System.out.print("Please enter your name: ");
-        Scanner scanner = new Scanner(System.in);
-        String patientName = scanner.nextLine();
-        scanner.close();
+        BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
+        String patientName = consoleReader.readLine();
         Socket makeSocket = null, cancelSocket = null;
         PrintWriter out1 = null, out2 = null;
         try {
@@ -24,12 +23,11 @@ public class Client {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedReader socketReader_make = new BufferedReader(new InputStreamReader(makeSocket.getInputStream()));
         BufferedReader socketReader_cancel = new BufferedReader(new InputStreamReader(cancelSocket.getInputStream()));
         while (true) {
             System.out.println("Enter\n 1 to make a new appointment\n 2 to cancel an appointment");
-            int inpt = scanner.nextInt();
+            int inpt = Integer.parseInt(consoleReader.readLine());
             System.out.print("Enter Doctor ID: \n");
             String docID = consoleReader.readLine();
             System.out.println("Enter Timeslot: ");
