@@ -13,10 +13,12 @@ public class Doctor {
     public String getDoctorId() {
         return this.id;
     }
-    public boolean setTimeslot(int slotIndex, String patientName) {
-        if (slotIndex >= 0 && slotIndex < this.timeslots.length && !this.timeslots[slotIndex]) {
-            timeslots[slotIndex] = true;
-            patients[slotIndex] = patientName;
+    public boolean setTimeslot(int slotIndex, boolean setValue, String patientName) {
+        if (slotIndex >= 0 && slotIndex < this.timeslots.length ) {
+            if(this.timeslots[slotIndex] && setValue) return false;
+            this.timeslots[slotIndex] = setValue;
+            if(setValue) this.patients[slotIndex] = patientName;
+            else this.patients[slotIndex] = null;
             return true;
         }
         return false;
