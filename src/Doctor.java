@@ -23,4 +23,13 @@ public class Doctor {
         }
         return false;
     }
+    public void printDoctorInfo() {
+        System.out.println("Doctor Info: ");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Timeslots:");
+        for (int i = 0; i < timeslots.length; i++) {
+            System.out.println("Slot " + i + ": " + (timeslots[i] ? "Booked " + patients[i]: "Not Booked "));
+        }
+    }
 }
