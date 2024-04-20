@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Hospital {
@@ -30,5 +31,21 @@ public class Hospital {
                 scanner.close();
             }
         }
+    }
+    public boolean makeAppointment(String doctorId, int slotIndex, String patientName) {
+        for (Doctor doctor : this.doctors) {
+            if (doctor.getDoctorId().equals(doctorId)) {
+                return doctor.setTimeslot(slotIndex, true, patientName);
+            }
+        }
+        return false;
+    }
+    public boolean cancelAppointment(String doctorId, int slotIndex, String patientName) {
+        for (Doctor doctor : doctors) {
+            if (doctor.getDoctorId().equals(doctorId)) {
+                return doctor.setTimeslot(slotIndex, false, patientName);
+            }
+        }
+        return false;
     }
 }
