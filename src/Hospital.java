@@ -48,4 +48,10 @@ public class Hospital {
         }
         return false;
     }
+    public void print() {
+        System.out.println("Hospital Info:");
+        for (Doctor doctor : doctors) {
+            doctor.printDoctorInfo();
+        }
+    }
 }
