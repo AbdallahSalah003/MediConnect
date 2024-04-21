@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Client {
     public static final int MAKE_APPOINTMENT_PORT = 6666;
     public static final int CANCEL_APPOINTMENT_PORT = 6667;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         System.out.print("Please enter your name: ");
         BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
         String patientName = consoleReader.readLine();
@@ -34,10 +34,12 @@ public class Client {
             if(inpt == 1) {
                 // make appointment
                 out1.println(docID + ' ' + patientName + ' ' + timeSlot);
+                Thread.sleep(1000);
                 response = socketReader_make.readLine();
             } else {
                 // cancel appointment
                 out2.println(docID + ' ' + patientName + ' ' + timeSlot);
+                Thread.sleep(1000);
                 response = socketReader_cancel.readLine();
             }
             System.out.println("Result: " + response);
