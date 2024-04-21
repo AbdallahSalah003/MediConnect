@@ -10,7 +10,7 @@ public class Server {
     public static final int CANCEL_APPOINTMENT_PORT = 6667;
     private static Hospital hospital;
     public static void main(String[] args) {
-        hospital = new Hospital("Input.txt");
+        hospital = new Hospital("/home/abdallah/IdeaProjects/MediConnect/src/Input.txt");
         // TODO: The server should take requests from clients IN PARALLEL
         // TODO: on both ports for many make and cancel appointments
         new Thread(() -> {
