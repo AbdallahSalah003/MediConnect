@@ -35,7 +35,7 @@ public class Doctor {
         System.out.println("Name: " + name);
         System.out.println("Timeslots:");
         for (int i = 0; i < timeslots.length; i++) {
-            System.out.println("Slot " + i + ": " + (timeslots[i] ? "Booked " + patients[i]: "Not Booked "));
+            System.out.println("Slot " + i + ": " + (timeslots[i] ? "Patient: " + patients[i]: "Not Booked "));
         }
     }
 }
