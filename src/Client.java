@@ -17,9 +17,7 @@ public class Client {
             cancelSocket = new Socket("localhost", CANCEL_APPOINTMENT_PORT);
             // Send patient's name to both sockets
             out1 = new PrintWriter(makeSocket.getOutputStream());
-            out1.println(patientName);
             out2 = new PrintWriter(cancelSocket.getOutputStream());
-            out2.println(patientName);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -35,11 +33,11 @@ public class Client {
             String response = null;
             if(inpt == 1) {
                 // make appointment
-                out1.println(docID + ' ' + timeSlot);
+                out1.println(docID + ' ' + patientName + ' ' + timeSlot);
                 response = socketReader_make.readLine();
             } else {
                 // cancel appointment
-                out2.println(docID + ' ' + timeSlot);
+                out2.println(docID + ' ' + patientName + ' ' + timeSlot);
                 response = socketReader_cancel.readLine();
             }
             System.out.println("Result: " + response);
