@@ -13,15 +13,21 @@ public class Doctor {
     public String getDoctorId() {
         return this.id;
     }
-    public boolean setTimeslot(int slotIndex, boolean setValue, String patientName) {
-        if (slotIndex >= 0 && slotIndex < this.timeslots.length ) {
-            if(this.timeslots[slotIndex] && setValue) return false;
+    public String setTimeslot(int slotIndex, boolean setValue, String patientName) {
+        if (slotIndex >= 0 && slotIndex < this.timeslots.length) {
+            if (this.timeslots[slotIndex] && setValue) return "The doctor is already busy at this timeslot";
+            if (!this.timeslots[slotIndex] && !setValue) return "The doctor doesn't has an appointment at this timeslot!";
             this.timeslots[slotIndex] = setValue;
-            if(setValue) this.patients[slotIndex] = patientName;
-            else this.patients[slotIndex] = null;
-            return true;
+            if (setValue) {
+                this.patients[slotIndex] = patientName;
+                return "Making the appointment is done successfully";
+            } else {
+                if (!this.patients[slotIndex].equals(patientName)) return "This timeslot belongs to other patient!";
+                this.patients[slotIndex] = null;
+                return "Cancel the appointment is done successfully";
+            }
         }
-        return false;
+        return "The timeslot is out of boundary";
     }
     public void printDoctorInfo() {
         System.out.println("Doctor Info: ");
