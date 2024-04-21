@@ -51,23 +51,13 @@ public class Server {
                 String input;
                 while((input = br.readLine()) != null) {
                     inputs = input.split(" ");
-                    boolean check;
+                    String response;
                     if(this.socket.getLocalPort() == MAKE_APPOINTMENT_PORT) {
-                        check = hospital.makeAppointment(inputs);
-                        if(check) {
-                            out.println("Appointment is reserved successfully!");
-                        } else {
-                            out.println("Can not reserve the appointment");
-                        }
+                        response = hospital.makeAppointment(inputs);
                     } else {
-                        check = hospital.cancelAppointment(inputs);
-                        if(check) {
-                            out.println("Appointment is canceled successfully!");
-                        } else {
-                            out.println("Can not cancel the appointment");
-                        }
+                        response = hospital.cancelAppointment(inputs);
                     }
-
+                    out.println(response);
                 }
                 br.close();
                 out.close();
