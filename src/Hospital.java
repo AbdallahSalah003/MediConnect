@@ -33,8 +33,8 @@ public class Hospital {
         }
     }
     public String makeAppointment(String[] data) {
-        String doctorId = data[0], patientName = data[2];
-        int slotIndex = Integer.parseInt(data[1]);
+        String doctorId = data[0], patientName = data[1];
+        int slotIndex = Integer.parseInt(data[2]);
         for (Doctor doctor : this.doctors) {
             if (doctor.getDoctorId().equals(doctorId)) {
                 return doctor.setTimeslot(slotIndex, true, patientName);
@@ -43,8 +43,8 @@ public class Hospital {
         return "The Doctor ID is not found!";
     }
     public String cancelAppointment(String[] data) {
-        String doctorId = data[0], patientName = data[2];
-        int slotIndex = Integer.parseInt(data[1]);
+        String doctorId = data[0], patientName = data[1];
+        int slotIndex = Integer.parseInt(data[2]);
         for (Doctor doctor : doctors) {
             if (doctor.getDoctorId().equals(doctorId)) {
                 return doctor.setTimeslot(slotIndex, false, patientName);
