@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
@@ -12,6 +13,29 @@ public class Server {
         hospital = new Hospital("Input.txt");
         // TODO: The server should take requests from clients IN PARALLEL
         // TODO: on both ports for many make and cancel appointments
+        new Thread(() -> {
+            try {
+                ServerSocket ss = new ServerSocket(MAKE_APPOINTMENT_PORT);
+                while(true) {
+                    new Appointment(ss.accept()).start();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }).start();
+
+        new Thread(() -> {
+            try {
+                ServerSocket ss = new ServerSocket(CANCEL_APPOINTMENT_PORT);
+                while(true) {
+                    new Appointment(ss.accept()).start();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }).start();
 
     }
     private static class Appointment extends Thread {
