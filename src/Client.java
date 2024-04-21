@@ -16,8 +16,8 @@ public class Client {
             makeSocket = new Socket("localhost", MAKE_APPOINTMENT_PORT);
             cancelSocket = new Socket("localhost", CANCEL_APPOINTMENT_PORT);
             // Send patient's name to both sockets
-            out1 = new PrintWriter(makeSocket.getOutputStream());
-            out2 = new PrintWriter(cancelSocket.getOutputStream());
+            out1 = new PrintWriter(makeSocket.getOutputStream(), true);
+            out2 = new PrintWriter(cancelSocket.getOutputStream(), true);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
