@@ -14,9 +14,9 @@ public class Server {
         // TODO: on both ports for many make and cancel appointments
 
     }
-    private static class MakeAppointment extends Thread {
+    private static class Appointment extends Thread {
         Socket socket;
-        public MakeAppointment(Socket s) {
+        public Appointment(Socket s) {
             this.socket = s;
         }
         public void run() {
@@ -27,12 +27,23 @@ public class Server {
                 String input;
                 while((input = br.readLine()) != null) {
                     inputs = input.split(" ");
-                    boolean check = hospital.makeAppointment(inputs);
-                    if(check) {
-                        out.println("Appointment is reserved successfully!");
+                    boolean check;
+                    if(this.socket.getLocalPort() == MAKE_APPOINTMENT_PORT) {
+                        check = hospital.makeAppointment(inputs);
+                        if(check) {
+                            out.println("Appointment is reserved successfully!");
+                        } else {
+                            out.println("Can not reserve the appointment");
+                        }
                     } else {
-                        out.println("Can not reserve the appointment");
+                        check = hospital.cancelAppointment(inputs);
+                        if(check) {
+                            out.println("Appointment is canceled successfully!");
+                        } else {
+                            out.println("Can not cancel the appointment");
+                        }
                     }
+
                 }
                 br.close();
                 out.close();
