@@ -58,6 +58,7 @@ public class Server {
                         response = hospital.cancelAppointment(inputs);
                     }
                     out.println(response);
+                    hospital.print();
                 }
                 br.close();
                 out.close();
