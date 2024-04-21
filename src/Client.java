@@ -43,6 +43,12 @@ public class Client {
                 response = socketReader_cancel.readLine();
             }
             System.out.println("Result: " + response);
+            System.out.println("Press 2 to Exit!");
+            String toExit = consoleReader.readLine();
+            if(toExit.equals("2")) break;
         }
+        consoleReader.close();
+        socketReader_cancel.close();
+        socketReader_make.close();
     }
 }
