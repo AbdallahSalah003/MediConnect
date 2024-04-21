@@ -32,7 +32,9 @@ public class Hospital {
             }
         }
     }
-    public boolean makeAppointment(String doctorId, int slotIndex, String patientName) {
+    public boolean makeAppointment(String[] data) {
+        String doctorId = data[0], patientName = data[2];
+        int slotIndex = Integer.parseInt(data[1]);
         for (Doctor doctor : this.doctors) {
             if (doctor.getDoctorId().equals(doctorId)) {
                 return doctor.setTimeslot(slotIndex, true, patientName);
@@ -40,7 +42,9 @@ public class Hospital {
         }
         return false;
     }
-    public boolean cancelAppointment(String doctorId, int slotIndex, String patientName) {
+    public boolean cancelAppointment(String[] data) {
+        String doctorId = data[0], patientName = data[2];
+        int slotIndex = Integer.parseInt(data[1]);
         for (Doctor doctor : doctors) {
             if (doctor.getDoctorId().equals(doctorId)) {
                 return doctor.setTimeslot(slotIndex, false, patientName);
