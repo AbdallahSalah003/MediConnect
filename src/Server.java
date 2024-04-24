@@ -50,7 +50,7 @@ public class Server {
                 String[] inputs;
                 String input;
                 while((input = br.readLine()) != null) {
-                    inputs = input.split(" ");
+                    inputs = input.split(" , ");
                     String response;
                     if(this.socket.getLocalPort() == MAKE_APPOINTMENT_PORT) {
                         response = hospital.makeAppointment(inputs);

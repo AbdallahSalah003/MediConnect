@@ -33,12 +33,12 @@ public class Client {
             String response = null;
             if(inpt == 1) {
                 // make appointment
-                out1.println(docID + ' ' + patientName + ' ' + timeSlot);
+                out1.println(docID + " , " + patientName + " , " + timeSlot);
                 Thread.sleep(1000);
                 response = socketReader_make.readLine();
             } else {
                 // cancel appointment
-                out2.println(docID + ' ' + patientName + ' ' + timeSlot);
+                out2.println(docID + " , " + patientName + " , " + timeSlot);
                 Thread.sleep(1000);
                 response = socketReader_cancel.readLine();
             }
