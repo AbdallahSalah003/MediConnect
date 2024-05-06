@@ -40,6 +40,7 @@ In another terminals you can Init multiple Clients
 ```
 java src/Client.java
 ```
+You Can Also handel all requests using one thread in java, you can search about it.
 
 
 
