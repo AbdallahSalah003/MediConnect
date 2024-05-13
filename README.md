@@ -40,7 +40,7 @@ In another terminals you can Init multiple Clients
 ```
 java src/Client.java
 ```
-You Can Also handel all requests using one thread in java, you can search about it.
+<a href="https://medium.com/@burakkocakeu/how-to-handle-multiple-api-requests-in-java-247dae5c441"> You Can Also handel all requests using one thread in java, you can search about it.</a>
 
 
 
